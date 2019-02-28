@@ -20,6 +20,7 @@ Planned:
   - Will even download and save videos and PDFs.
 - Importing and exporting of bookmark to different bookmark formats.
 - Make a bookmark public to allow people without an account to view them.
+- A comic/manga and story reader, maybe even user made extensions for it.
 
 Might Implement:
 
