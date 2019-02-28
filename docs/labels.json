@@ -1,0 +1,143 @@
+[{
+    "name": "Priority: Critical",
+    "color": "#FF0000",
+    "board": false,
+    "priority": 10
+}, {
+    "name": "Priority: High",
+    "color": "#F0AD4E",
+    "board": false,
+    "priority": 9
+}, {
+    "name": "Priority: Medium",
+    "color": "#D1D100",
+    "board": false,
+    "priority": 8
+}, {
+    "name": "Priority: Low",
+    "color": "#A8D695",
+    "board": false,
+    "priority": 7
+}, {
+    "name": "Status: Abandoned",
+    "color": "#34495E",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Status: Accepted",
+    "color": "#009800",
+    "board": true,
+    "priority": 1
+}, {
+    "name": "Status: Proposal",
+    "color": "#FF0000",
+    "board": true,
+    "priority": 1
+}, {
+    "name": "Status: In Progress",
+    "color": "#7F8C8D",
+    "board": true,
+    "priority": 1
+}, {
+    "name": "Status: Review Needed",
+    "color": "#D1D100",
+    "board": true,
+    "priority": 1,
+    "description": "Needs review from a maintainer"
+}, {
+    "name": "Status: Revision Needed",
+    "color": "#FF0000",
+    "board": false,
+    "priority": 1,
+    "description": "Needs code input from a maintainer"
+}, {
+    "name": "Status: Doc Needed",
+    "color": "#34495E",
+    "board": true,
+    "priority": 1
+}, {
+    "name": "Status: Available",
+    "color": "#5CB85C",
+    "board": true,
+    "priority": 1
+}, {
+    "name": "Status: Blocked",
+    "color": "#FF0000",
+    "board": false,
+    "priority": 1,
+    "description": "Blocked because of upstream dependencies"
+}, {
+    "name": "Status: Wontfix",
+    "color": "#7F8C8D",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Bug",
+    "color": "#FF0000",
+    "board": false,
+    "priority": 11
+}, {
+    "name": "Type: Maintenance",
+    "color": "#D1D100",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Enhancement",
+    "color": "#428BCA",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Discussion",
+    "color": "#8E44AD",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Security",
+    "color": "#D9534F",
+    "board": false,
+    "priority": 11
+}, {
+    "name": "Type: Feature",
+    "color": "#69D100",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Optimization",
+    "color": "#0033CC",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: UI/UX",
+    "color": "#F0AD4E",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "Type: Compatibility",
+    "color": "#34495E",
+    "board": false,
+    "priority": 1
+}, {
+    "name": "OS: Linux",
+    "color": "#A295D6",
+    "board": false,
+    "priority": 1,
+    "description": "This affects the Linux operating system"
+}, {
+    "name": "OS: OSX",
+    "color": "#A295D6",
+    "board": false,
+    "priority": 1,
+    "description": "This affects the Max OSX operating system"
+}, {
+    "name": "OS: Unix",
+    "color": "#A295D6",
+    "board": false,
+    "priority": 1,
+    "description": "This affects the Unix operating system"
+}, {
+    "name": "OS: Windows",
+    "color": "#A295D6",
+    "board": false,
+    "priority": 1,
+    "description": "This affects the Windows operating system"
+}]
