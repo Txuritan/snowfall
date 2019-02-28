@@ -1,0 +1,35 @@
+:root {
+    --item-padding: 10px;
+
+    --sidebar-width: 270px;
+
+    --main-width: 330px;
+}
+
+html[data-theme='dark'] {
+    --hue: 214;
+    --saturation: 30%; // 15%
+
+    --sidebar-background: hsl(var(--hue), var(--saturation), 10%);
+    --sidebar-text-header: hsl(var(--hue), var(--saturation), 80%);
+
+    --main-background: hsl(var(--hue), var(--saturation), 12%);
+
+    --content-background: hsl(var(--hue), var(--saturation), 14%);
+
+    --text-color-normal: hsl(#{var(--hue)}, var(--saturation), 62%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--main-background);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}

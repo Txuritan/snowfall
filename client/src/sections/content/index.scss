@@ -1,0 +1,15 @@
+#content {
+    background-color: #{var(--content-background)};
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: calc(#{var(--sidebar-width)} + #{var(--main-width)});
+    position: absolute;
+    right: 0;
+    transition: transform .3s ease-in-out;
+    top: 0;
+
+    &.hidden {
+        transform: translatex(100%);
+    }
+}

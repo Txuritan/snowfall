@@ -1,0 +1,31 @@
+type Bookmark {
+    id: Int @fake(type: number)
+    collection: Collection
+    title: String @fake(type: words)
+    domain: String @fake(type: domainName)
+    link: String @fake(type: url)
+    type: String @examples(values: ["link", "article", "image", "video"])
+    tags: [Tag]
+}
+
+type Collection {
+    id: Int @fake(type: number)
+    user: User
+    title: String @fake(type: words)
+    count: Int @fake(type: number)
+}
+
+type Tag {
+    id: Int @fake(type: number)
+    name: String @fake(type: word)
+}
+
+type User {
+    id: Int @fake(type: number)
+    name: String @fake(type: fullName)
+}
+
+type Query {
+    allBookmarks: [Bookmark]!
+    allUsers: [User]!
+}

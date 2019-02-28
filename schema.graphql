@@ -1,0 +1,44 @@
+interface Node {
+    id: ID!
+}
+
+type PageInfo {
+    hasNextPage: Boolean!
+    hasPreviousPage: Boolean!
+    startCursor: String
+    endCursor: String
+}
+
+type Bookmark implements Node {
+    id: ID!
+}
+
+type BookmarkConnection {
+    pageInfo: PageInfo!
+    edges: [BookmarkEdge]
+    totalCount: Int
+    bookmarks: [Bookmark]
+}
+
+type BookmarkEdge {
+    cursor: String!
+    node: Bookmark
+}
+
+type Collection implements Node {
+    id: ID!
+}
+
+type Tag implements Node {
+    id: ID!
+}
+
+type User implements Node {
+    id: ID!
+}
+
+type Query {
+    node(id: ID!): Node
+}
+
+type Mutation {}

@@ -1,0 +1,29 @@
+.main.item {
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    color: var(--sidebar-text-header);
+    padding: var(--item-padding) var(--item-padding) var(--item-padding) calc(var(--item-padding));
+    transition: background-color .1s ease-in-out;
+
+    h3 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .tag {
+        color: #{var(--text-color-normal)};
+        border-bottom: 1px solid transparent;
+        text-decoration: none;
+        transition: border-color .1s ease-in-out;
+
+        &:hover {
+            border-color: #{var(--text-color-normal)};
+        }
+    }
+
+    &:hover {
+        background-color: #{var(--content-background)};
+    }
+}

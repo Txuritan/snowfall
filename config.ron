@@ -1,0 +1,10 @@
+Config(
+    jwt: "ËOM÷Gëð»N¶eâÄCªÍøXnì×#aÊ.ÐxdZuP£ÏÆÁ6åZÿ«âÄÛÚá(Å¥°^Hl+hÜVßÏ3¸EÈÌFÿëBªaÅÜßU)§üÁvîXÉ½ÏfT»¹-æ2vð)Cñ´óq¾®vûiOì1`}âí»»Ì¸äM*ÏiÃH9ú¡6+~`",
+    database: SQLite(
+        file: "snowfall.db",
+    ),
+    server: Server(
+        host: "127.0.0.1",
+        port: "50411",
+    ),
+)
