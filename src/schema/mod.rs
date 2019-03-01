@@ -26,47 +26,63 @@ graphql_object!(QueryRoot: Database |&self| {
 
     field collection(&executor, id: i32) -> FieldResult<Collection> {
         match executor.context() {
+            //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { pool } => {
                 Ok(Collection {
                     id,
                     title: "4".to_string(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(51,103,145,0.1)] PostgreSQL
             Database::PostgreSQL { pool } => {
                 Ok(Collection {
                     id,
                     title: "4".to_string(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(1,52,76,0.3)] SQLite
             Database::SQLite { pool } => {
                 Ok(Collection {
                     id,
                     title: "4".to_string(),
                 })
             },
+            //#endregion
         }
     }
 
     field tag(&executor, id: i32) -> FieldResult<Tag> {
         match executor.context() {
+            //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { pool } => {
                 Ok(Tag {
                     id,
                     name: "4".to_string(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(51,103,145,0.1)] PostgreSQL
             Database::PostgreSQL { pool } => {
                 Ok(Tag {
                     id,
                     name: "4".to_string(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(1,52,76,0.3)] SQLite
             Database::SQLite { pool } => {
                 Ok(Tag {
                     id,
                     name: "4".to_string(),
                 })
             },
+            //#endregion
         }
     }
 });
@@ -75,17 +91,12 @@ graphql_object!(MutationRoot: Database |&self| {
     field createBookmark(&executor, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
         executor.context().create_bookmark(title, url, tags)
     }
-
-    field register(&executor, username: Option<String>, email: String, password: String) -> FieldResult<Register> {
-        Ok(Register {
-            result: "".to_string(),
-        })
-    }
 });
 
 impl Database {
     fn create_bookmark(&self, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
         match self {
+            //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { .. } => {
                 Ok(Bookmark {
                     id: 0,
@@ -95,6 +106,9 @@ impl Database {
                     tags: Vec::new(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(51,103,145,0.1)] PostgreSQL
             Database::PostgreSQL { .. } => {
                 Ok(Bookmark {
                     id: 0,
@@ -104,6 +118,9 @@ impl Database {
                     tags: Vec::new(),
                 })
             },
+            //#endregion
+
+            //#region[rgba(1,52,76,0.3)] SQLite
             Database::SQLite { pool } => {
                 let mut conn = pool.get()?;
 
@@ -177,11 +194,13 @@ impl Database {
 
                 self.get_bookmark_by_id(bookmark_id)
             }
+            //#endregion
         }
     }
 
     fn get_bookmark_by_id(&self, id: i32) -> FieldResult<Bookmark> {
         match self {
+            //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { .. } => Ok(Bookmark {
                 id: id,
                 title: "".to_string(),
@@ -189,6 +208,9 @@ impl Database {
                 url: "".to_string(),
                 tags: Vec::new(),
             }),
+            //#endregion
+
+            //#region[rgba(51,103,145,0.1)] PostgreSQL
             Database::PostgreSQL { .. } => Ok(Bookmark {
                 id: id,
                 title: "".to_string(),
@@ -196,6 +218,9 @@ impl Database {
                 url: "".to_string(),
                 tags: Vec::new(),
             }),
+            //#endregion
+
+            //#region[rgba(1,52,76,0.3)] SQLite
             Database::SQLite { pool } => {
                 let conn = pool.get()?;
 
@@ -226,6 +251,7 @@ impl Database {
 
                 Ok(bookmark)
             }
+            //#endregion
         }
     }
 }
