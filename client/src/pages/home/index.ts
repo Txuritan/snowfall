@@ -1,6 +1,8 @@
 import "./index.scss";
 
-import * as m from "mithril";
+import m from "mithril";
+
+import State from "../../state";
 
 import MainItem from "../../components/main-item";
 
@@ -39,7 +41,7 @@ let Items: IItems = {
     fetch: () => {
         m.request({
             method: "POST",
-            url: "/graphql",
+            url: `${State.debug ? "http://localhost:9002" : ""}/graphql`,
             headers: { "Content-Type": "application/json" },
             data: {
                 operationName: null,

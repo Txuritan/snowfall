@@ -1,11 +1,11 @@
+import m from "mithril";
+
 import "./index.scss";
 
-import * as m from "mithril";
-
-import home from "./pages/home";
+import Home from "./pages/home";
 
 m.route(document.body, "/", {
-    "/": home,
+    "/": Home,
 })
 
 ///////////////////////////////////////////////////////////////////////////////

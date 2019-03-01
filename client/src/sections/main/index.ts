@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import * as m from "mithril";
+import m from "mithril";
 
 import State from "../../state";
 
