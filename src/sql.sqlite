@@ -5,65 +5,28 @@
 CREATE TABLE
 IF NOT EXISTS
     users (
-        id
-            INTEGER
-            NOT NULL
-            PRIMARY KEY,
+        id              INTEGER     NOT NULL
+                                    PRIMARY KEY,
+        name            TEXT        NOT NULL,
+        email           TEXT        NOT NULL,
+        salt            TEXT        NOT NULL,
+        password        TEXT        NOT NULL,
 
-        name
-            TEXT
-            NOT NULL,
-
-        email
-            TEXT
-            NOT NULL,
-
-        salt
-            TEXT
-            NOT NULL,
-
-        password
-            TEXT
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
     );
 
 CREATE TABLE
 IF NOT EXISTS
     collections (
-        id
-            INTEGER
-            NOT NULL
-            PRIMARY KEY,
+        id              INTEGER     NOT NULL
+                                    PRIMARY KEY,
+        user            INTEGER     NOT NULL,
+        title           TEXT        NOT NULL,
+        count           INTEGER     NOT NULL,
 
-        user
-            INTEGER
-            NOT NULL,
-
-        title
-            TEXT
-            NOT NULL,
-
-        count
-            INTEGER
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL,
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
 
         FOREIGN KEY (user) REFERENCES users(id)
     );
@@ -71,65 +34,35 @@ IF NOT EXISTS
 CREATE TABLE
 IF NOT EXISTS
     tags (
-        id
-            INTEGER
-            NOT NULL
-            PRIMARY KEY,
+        id              INTEGER     NOT NULL
+                                    PRIMARY KEY,
+        name            TEXT        NOT NULL,
 
-        name
-            TEXT
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
     );
 
 CREATE TABLE
 IF NOT EXISTS
     bookmarks (
-        id
-            INTEGER
-            NOT NULL
-            PRIMARY KEY,
+        id              INTEGER     NOT NULL
+                                    PRIMARY KEY,
+        title           TEXT        NOT NULL,
+        domain          TEXT        NOT NULL,
+        url             TEXT        NOT NULL,
 
-        title
-            TEXT
-            NOT NULL,
-
-        domain
-            TEXT
-            NOT NULL,
-
-        url
-            TEXT
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
     );
 
 CREATE TABLE
 IF NOT EXISTS
     collection_tree (
-        ancestor
-            INTEGER
-            NOT NULL,
+        ancestor        INTEGER     NOT NULL,
+        descendant      INTEGER     NOT NULL,
 
-        descendant
-            INTEGER
-            NOT NULL,
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
 
         PRIMARY KEY (ancestor, descendant)
     );
@@ -137,23 +70,11 @@ IF NOT EXISTS
 CREATE TABLE
 IF NOT EXISTS
     bookmark_tags (
-        bookmark_id
-            INTEGER
-            NOT NULL,
+        bookmark_id     INTEGER     NOT NULL,
+        tag_id          INTEGER     NOT NULL,
 
-        tag_id
-            INTEGER
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL,
-
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
 
         FOREIGN KEY (bookmark_id) REFERENCES bookmarks(id),
         FOREIGN KEY (tag_id) REFERENCES tags(id)
@@ -162,23 +83,11 @@ IF NOT EXISTS
 CREATE TABLE
 IF NOT EXISTS
     user_collections (
-        user_id
-            INTEGER
-            NOT NULL,
+        user_id         INTEGER     NOT NULL,
+        collection_id   INTEGER     NOT NULL,
 
-        collection_id
-            INTEGER
-            NOT NULL,
-
-
-        created
-            INTEGER
-            NOT NULL,
-
-        last_updated
-            INTEGER
-            NOT NULL,
-
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL
 
         FOREIGN KEY (user_id) REFERENCES users(id),
         FOREIGN KEY (collection_id) REFERENCES collections(id)
