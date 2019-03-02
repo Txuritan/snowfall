@@ -132,7 +132,7 @@ impl Database {
                 let date_time: DateTime<Utc> = Utc::now();
                 let naive = date_time.naive_utc();
 
-                let mut bookmark_id = 0i32;
+                let bookmark_id: i32;
 
                 {
                     tx.execute(
@@ -192,13 +192,13 @@ impl Database {
 
                 tx.commit()?;
 
-                self.get_bookmark_by_id(bookmark_id)
+                self.get_bookmark_by_id(Some(token), bookmark_id)
             }
             //#endregion
         }
     }
 
-    fn get_bookmark_by_id(&self, token: Option<String>, id: i32) -> FieldResult<Bookmark> {
+    fn get_bookmark_by_id(&self, _token: Option<String>, id: i32) -> FieldResult<Bookmark> {
         match self {
             //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { .. } => Ok(Bookmark {
