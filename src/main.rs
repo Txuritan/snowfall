@@ -17,12 +17,13 @@ use actix_web::{
 use juniper::http::GraphQLRequest;
 
 use crate::{
+    config::Config,
     database::Database,
     schema::{create_schema, Schema},
 };
 
 lazy_static! {
-    pub static ref CONFIG: config::Config = config::Config::new();
+    pub static ref CONFIG: Config = Config::load();
 }
 
 struct SnowfallState {
