@@ -4,12 +4,17 @@ version = "0.1.0"
 authors = ["Txuritan <txuritan@protonmail.com>"]
 edition = "2018"
 
+[features]
+default = ["ssl"]
+ssl = ["openssl", "actix-web/ssl"]
+
 [dependencies]
 # utils
 env_logger = "0.6"
 failure = "0.1" # i dont like using it but actix supports it
 futures = "0.1"
 lazy_static = "1.3"
+openssl = { version = "0.10", optional = true }
 ron = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 
