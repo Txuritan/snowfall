@@ -20,11 +20,11 @@ pub fn create_schema() -> Schema {
 }
 
 graphql_object!(QueryRoot: Database |&self| {
-    field bookmark(&executor, id: i32) -> FieldResult<Bookmark> {
-        executor.context().get_bookmark_by_id(id)
+    field bookmark(&executor, token: Option<String>, id: i32) -> FieldResult<Bookmark> {
+        executor.context().get_bookmark_by_id(token, id)
     }
 
-    field collection(&executor, id: i32) -> FieldResult<Collection> {
+    field collection(&executor, token: Option<String>, id: i32) -> FieldResult<Collection> {
         match executor.context() {
             //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { pool } => {
@@ -55,7 +55,7 @@ graphql_object!(QueryRoot: Database |&self| {
         }
     }
 
-    field tag(&executor, id: i32) -> FieldResult<Tag> {
+    field tag(&executor, token: Option<String>, id: i32) -> FieldResult<Tag> {
         match executor.context() {
             //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { pool } => {
@@ -88,13 +88,13 @@ graphql_object!(QueryRoot: Database |&self| {
 });
 
 graphql_object!(MutationRoot: Database |&self| {
-    field createBookmark(&executor, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
-        executor.context().create_bookmark(title, url, tags)
+    field createBookmark(&executor, token: String, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
+        executor.context().create_bookmark(token, title, url, tags)
     }
 });
 
 impl Database {
-    fn create_bookmark(&self, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
+    fn create_bookmark(&self, token: String, title: String, url: String, tags: Option<Vec<String>>) -> FieldResult<Bookmark> {
         match self {
             //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { .. } => {
@@ -198,7 +198,7 @@ impl Database {
         }
     }
 
-    fn get_bookmark_by_id(&self, id: i32) -> FieldResult<Bookmark> {
+    fn get_bookmark_by_id(&self, token: Option<String>, id: i32) -> FieldResult<Bookmark> {
         match self {
             //#region[rgba(241,153,31,0.1)] MySQL
             Database::MySQL { .. } => Ok(Bookmark {
