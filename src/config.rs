@@ -6,7 +6,7 @@ use serde::Deserialize;
 
 #[derive(Clone, Deserialize)]
 pub struct Config {
-    pub jwt: String,
+    pub salt: String,
     #[serde(default = "database_default")]
     pub database: Database,
     #[serde(default = "server_default")]

@@ -1,16 +1,16 @@
--- code: language=sql
+-- code: language=sqlite
 
 -- TODO: setup indexes
 
 CREATE TABLE
 IF NOT EXISTS
     users (
-        id              INTEGER     NOT NULL
+        id              TEXT        NOT NULL
                                     PRIMARY KEY,
         name            TEXT        NOT NULL,
         email           TEXT        NOT NULL,
         salt            TEXT        NOT NULL,
-        password        TEXT        NOT NULL,
+        hash            TEXT        NOT NULL,
 
         created         INTEGER     NOT NULL,
         last_updated    INTEGER     NOT NULL
@@ -28,7 +28,7 @@ IF NOT EXISTS
         created         INTEGER     NOT NULL,
         last_updated    INTEGER     NOT NULL,
 
-        FOREIGN KEY (user) REFERENCES users(id)
+        FOREIGN KEY (user) REFERENCES users (id)
     );
 
 CREATE TABLE
@@ -36,7 +36,8 @@ IF NOT EXISTS
     tags (
         id              INTEGER     NOT NULL
                                     PRIMARY KEY,
-        name            TEXT        NOT NULL,
+        name            TEXT        NOT NULL
+                                    UNIQUE,
 
         created         INTEGER     NOT NULL,
         last_updated    INTEGER     NOT NULL
@@ -76,8 +77,8 @@ IF NOT EXISTS
         created         INTEGER     NOT NULL,
         last_updated    INTEGER     NOT NULL,
 
-        FOREIGN KEY (bookmark_id) REFERENCES bookmarks(id),
-        FOREIGN KEY (tag_id) REFERENCES tags(id)
+        FOREIGN KEY (bookmark_id) REFERENCES bookmarks (id),
+        FOREIGN KEY (tag_id) REFERENCES tags (id)
     );
 
 CREATE TABLE
@@ -89,6 +90,22 @@ IF NOT EXISTS
         created         INTEGER     NOT NULL,
         last_updated    INTEGER     NOT NULL,
 
-        FOREIGN KEY (user_id) REFERENCES users(id),
-        FOREIGN KEY (collection_id) REFERENCES collections(id)
+        FOREIGN KEY (user_id) REFERENCES users (id),
+        FOREIGN KEY (collection_id) REFERENCES collections (id)
+    );
+
+CREATE TABLE
+IF NOT EXISTS
+    user_tokens (
+        user_id         INTEGER     NOT NULL,
+        token           TEXT        NOT NULL
+                                    UNIQUE,
+        accept          TEXT        NOT NULL,
+
+        created         INTEGER     NOT NULL,
+        last_updated    INTEGER     NOT NULL,
+
+        PRIMARY KEY (user_id, token),
+
+        FOREIGN KEY (user_id) REFERENCES users (id)
     );

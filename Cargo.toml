@@ -12,6 +12,7 @@ ssl = ["openssl", "actix-web/ssl"]
 # utils
 env_logger = "0.6"
 failure = "0.1" # i dont like using it but actix supports it
+fast_chemail = "0.9"
 futures = "0.1"
 lazy_static = "1.3"
 openssl = { version = "0.10", optional = true }
@@ -27,6 +28,7 @@ serde_json = "1.0"
 # database
 bcrypt = "0.3"
 chrono = { version = "0.4", features = ["serde"] }
+nanoid = "0.2"
 r2d2 = "0.8"
 url = "1.7"
 uuid = { version = "0.7", features = ["serde", "v4"] }

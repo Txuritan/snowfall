@@ -55,7 +55,7 @@ pub struct BookmarkConnection {
     edges: Option<Vec<BookmarkEdge>>,
     #[serde(rename = "totalCount")]
     total_count: Option<i32>,
-    bookmarks: Option<Vec<Bookmark>>
+    bookmarks: Option<Vec<Bookmark>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -101,15 +101,23 @@ graphql_object!(Tag: () |&self| {
 });
 
 #[derive(Serialize, Deserialize)]
-pub struct Register {
-    pub result: String,
+pub struct User {
+    pub id: String,
+    pub username: String,
+    pub email: String,
 }
 
-graphql_object!(Register: () |&self| {
-    description: "Result of a user registering"
+graphql_object!(User: () |&self| {
+    field id() -> &String {
+        &self.id
+    }
 
-    field result() -> &String {
-        &self.result
+    field username() -> &String {
+        &self.username
+    }
+
+    field email() -> &String {
+        &self.email
     }
 });
 
