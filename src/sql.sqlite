@@ -26,7 +26,7 @@ IF NOT EXISTS
         count           INTEGER     NOT NULL,
 
         created         INTEGER     NOT NULL,
-        last_updated    INTEGER     NOT NULL
+        last_updated    INTEGER     NOT NULL,
 
         FOREIGN KEY (user) REFERENCES users(id)
     );
@@ -62,7 +62,7 @@ IF NOT EXISTS
         descendant      INTEGER     NOT NULL,
 
         created         INTEGER     NOT NULL,
-        last_updated    INTEGER     NOT NULL
+        last_updated    INTEGER     NOT NULL,
 
         PRIMARY KEY (ancestor, descendant)
     );
@@ -74,7 +74,7 @@ IF NOT EXISTS
         tag_id          INTEGER     NOT NULL,
 
         created         INTEGER     NOT NULL,
-        last_updated    INTEGER     NOT NULL
+        last_updated    INTEGER     NOT NULL,
 
         FOREIGN KEY (bookmark_id) REFERENCES bookmarks(id),
         FOREIGN KEY (tag_id) REFERENCES tags(id)
@@ -87,7 +87,7 @@ IF NOT EXISTS
         collection_id   INTEGER     NOT NULL,
 
         created         INTEGER     NOT NULL,
-        last_updated    INTEGER     NOT NULL
+        last_updated    INTEGER     NOT NULL,
 
         FOREIGN KEY (user_id) REFERENCES users(id),
         FOREIGN KEY (collection_id) REFERENCES collections(id)
